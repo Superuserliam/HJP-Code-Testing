@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJS Code Testing HTML</title>
+    <style>
+        /* Reset default margin and padding */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Full page layout */
+        html, body {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f7fa;
+        }
+
+        /* Main container */
+        .container {
+            text-align: center;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Header style */
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Text box style */
+        .text-box {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* On focus style for text box */
+        .text-box:focus {
+            border-color: #6c63ff;
+            box-shadow: 0px 0px 8px rgba(108, 99, 255, 0.5);
+            outline: none;
+        }
+
+        /* Submit button style */
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        .submit-btn:hover {
+            background-color: #4e43c2;
+        }
+
+        /* Output message */
+        .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .text-box {
+                font-size: 1em;
+            }
+
+            .submit-btn {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>HJS Code Testing</h1>
+        <p>Type html code below to watch it run!</p>
+
+        <textarea class="html code" id="textInput" rows="4" placeholder="Enter code here..."></textarea>
+
+        <br>
+
+        <button class="submit-btn" onclick="displayText()">Submit</button>
+
+        <div class="output" id="outputText"></div>
+    </div>
+
+    <script>
+      
+        function displayText() {
+            var text = document.getElementById('textInput').value;
+            document.getElementById('outputText').innerHTML = "You coded: " + text;
+        }
+    </script>
+
+</body>
+</html>
