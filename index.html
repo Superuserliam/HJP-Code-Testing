@@ -3,127 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJS Code Testing HTML</title>
+    <title>HJP Code Testing HTML</title>
     <style>
-        /* Reset default margin and padding */
-        body, h1, p {
+        body, html {
             margin: 0;
             padding: 0;
-        }
-
-        /* Full page layout */
-        html, body {
             height: 100%;
-            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f4f7fa;
+            background-color: #2d2d2d;
+            font-family: Arial, sans-serif;
+            color: #fff;
         }
 
-        /* Main container */
         .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            width: 100%;
-            max-width: 600px;
         }
 
-        /* Header style */
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        /* Text box style */
-        .text-box {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.2em;
-            border: 2px solid #ddd;
+        textarea {
+            width: 90%;
+            height: 60%;
+            font-size: 16px;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #444;
             border-radius: 10px;
             margin-bottom: 20px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        /* On focus style for text box */
-        .text-box:focus {
-            border-color: #6c63ff;
-            box-shadow: 0px 0px 8px rgba(108, 99, 255, 0.5);
+            resize: none;
             outline: none;
+            overflow: hidden;
         }
 
-        /* Submit button style */
-        .submit-btn {
-            padding: 10px 20px;
-            font-size: 1.1em;
-            background-color: #6c63ff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Button hover effect */
-        .submit-btn:hover {
-            background-color: #4e43c2;
-        }
-
-        /* Output message */
         .output {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
-            font-weight: bold;
+            width: 90%;
+            height: 30%;
+            border: 2px solid #444;
+            border-radius: 10px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-y: auto;
         }
 
-        /* Mobile responsiveness */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
+        
+        .output iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: #222;
+        }
 
-            h1 {
-                font-size: 1.8em;
-            }
+        #app-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-            .text-box {
-                font-size: 1em;
-            }
-
-            .submit-btn {
-                font-size: 1em;
-            }
+        #app-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>HJS Code Testing</h1>
-        <p>Type html code below to watch it run!</p>
-
-        <textarea class="html code" id="textInput" rows="4" placeholder="Enter code here..."></textarea>
-
-        <br>
-
-        <button class="submit-btn" onclick="displayText()">Submit</button>
-
-        <div class="output" id="outputText"></div>
+    <div id="app-wrapper">
+        <div class="container">
+            <textarea id="htmlInput" placeholder="Type your HTML code here..."></textarea>
+            <div class="output" id="htmlOutput"></div>
+        </div>
     </div>
 
     <script>
-      
-        function displayText() {
-            var text = document.getElementById('textInput').value;
-            document.getElementById('outputText').innerHTML = "You coded: " + text;
-        }
+        const htmlInput = document.getElementById("htmlInput");
+        const htmlOutput = document.getElementById("htmlOutput");
+
+        
+        htmlInput.addEventListener("input", function() {
+            const userCode = htmlInput.value;
+                        
+            const iframe = document.createElement("iframe");
+
+            iframe.srcdoc = userCode;
+            iframe.style.border = "none";
+
+            htmlOutput.innerHTML = "";
+            
+            htmlOutput.appendChild(iframe);
+        });
+
     </script>
 
 </body>
 </html>
+
